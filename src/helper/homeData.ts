@@ -58,7 +58,7 @@ export const homeData: HomePageData = {
         title: "Luxury",
         accent: "decor",
         image:
-          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882070/2_e5olg1.webp",
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882086/5_jueebl.webp",
       },
       {
         title: "Personalized",

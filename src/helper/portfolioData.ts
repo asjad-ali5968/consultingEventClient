@@ -17,7 +17,7 @@ export const portfolioPageData: PortfolioPageData = {
       { label: "All", value: "all" },
       { label: "Event", value: "weddings" },
       { label: "Ballons", value: "couples" },
-      { label: "Birthday", value: "events" },
+      { label: "Luxury", value: "events" },
     ],
     photos: [
       {
@@ -105,6 +105,13 @@ export const portfolioPageData: PortfolioPageData = {
         height: 2151,
       },
       {
+        src: "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882078/16_kpkudb.webp",
+        alt: "Portfolio photo 16",
+        category: "weddings",
+        width: 2048,
+        height: 3072,
+      },
+      {
         src: "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882084/13_wc5bqq.webp",
         alt: "Portfolio photo 13",
         category: "weddings",
@@ -125,20 +132,7 @@ export const portfolioPageData: PortfolioPageData = {
         width: 2048,
         height: 1365,
       },
-      {
-        src: "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882078/16_kpkudb.webp",
-        alt: "Portfolio photo 16",
-        category: "weddings",
-        width: 2048,
-        height: 3072,
-      },
-      {
-        src: "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882092/17_xwml19.webp",
-        alt: "Portfolio photo 17",
-        category: "couples",
-        width: 2048,
-        height: 3072,
-      },
+
       {
         src: "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882081/18_btqtsi.webp",
         alt: "Portfolio photo 18",
@@ -181,6 +175,13 @@ export const portfolioPageData: PortfolioPageData = {
         width: 2048,
         height: 1365,
       },
+      // {
+      //   src: "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882092/17_xwml19.webp",
+      //   alt: "Portfolio photo 17",
+      //   category: "couples",
+      //   width: 2048,
+      //   height: 3072,
+      // },
       {
         src: "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882093/24_x2gs6x.webp",
         alt: "Portfolio photo 24",
@@ -269,18 +270,18 @@ export const portfolioPageData: PortfolioPageData = {
   },
   reviewsData: {
     backgroundImage:
-      "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882093/26_sgifil.webp",
+      "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882074/3_nqxrls.webp",
     starsText: "★★★★★",
     items: [
       {
         name: "L. Mata",
         message:
-          "Lia is communicative, reasonably priced & most of all she delivered as expected. Love the balloons!! Will def book her again for my next event. Thanks Lia!!",
+          "Dora is communicative, reasonably priced & most of all she delivered as expected. Love the balloons!! Will def book her again for my next event. Thanks Lia!!",
       },
       {
         name: "M.Austin",
         message:
-          "Beasty Events Decor should be your first stop for any event. They are extremely professional and patient with their clients (my experiences has always been top tier). The work load and effort that is put into the work was definitely worth my coins. Stay bless and continue to Beasty Events Decor.",
+          "Dora Design should be your first stop for any event. They are extremely professional and patient with their clients (my experiences has always been top tier). The work load and effort that is put into the work was definitely worth my coins. Stay bless and continue to Beasty Events Decor.",
       },
       {
         name: "Pedro Lawrence",
