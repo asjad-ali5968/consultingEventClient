@@ -18,7 +18,7 @@ export default function PortfolioPage() {
       <PortfolioMasonry data={masonry} />
       <Reviews data={reviewsData} />
       <PortfolioNewsletter data={newsletter} />
-      <PortfolioClients data={clients} />
+      {/* <PortfolioClients data={clients} /> */}
     </>
   );
 }

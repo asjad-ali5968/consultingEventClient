@@ -7,8 +7,13 @@ type AboutUsProps = {
 };
 
 export default function AboutUs({ data }: AboutUsProps) {
+  const descriptionParagraphs = data.description
+    .split("\n\n")
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
   return (
-    <section className="bg-[#f3f3f1] px-6 py-24">
+    <section className="overflow-x-clip bg-[#f3f3f1] px-6 py-24">
       <div className="mx-auto grid w-full max-w-6xl gap-14 lg:grid-cols-2 lg:items-center">
         <div>
           <p className="font-sans text-[12px] uppercase tracking-[0.38em] text-black">
@@ -17,16 +22,23 @@ export default function AboutUs({ data }: AboutUsProps) {
           <h2 className="mt-3 text-[52px] leading-none text-black">
             {data.heading.title}
             <span
-              className="ml-48 mt-3 inline-block text-[64px] leading-none  font-medium align-middle"
+              className="ml-6 mt-3 inline-block text-[48px] leading-none font-semibold align-middle sm:ml-20 sm:text-[56px] lg:ml-48 lg:text-[64px]"
               style={{ fontFamily: "var(--font-league-script), cursive" }}
             >
               {data.heading.scriptWord}
             </span>
           </h2>
 
-          <p className="mt-7 max-w-xl font-sans text-[15px] leading-8 text-black">
-            {data.description}
-          </p>
+          <div className="mt-7 max-w-xl space-y-4">
+            {descriptionParagraphs.map((paragraph) => (
+              <p
+                key={paragraph}
+                className="font-sans text-[15px] leading-8 text-black"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
 
           <div className="mt-8 space-y-4">
             {data.bullets.map((bullet) => (
@@ -59,20 +71,20 @@ export default function AboutUs({ data }: AboutUsProps) {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[420px]">
-          <div className="absolute -right-7 top-6 h-full w-full bg-[#748173]" />
+        <div className="relative mx-auto w-full max-w-[460px] lg:max-w-[520px]">
+          <div className="absolute -right-3 top-4 h-[320px] w-full bg-[#748173] md:-right-7 md:top-18 lg:h-[480px]" />
 
-          <div className="group relative z-10 aspect-4/5 overflow-hidden">
+          <div className="group relative z-10 aspect-4/5 min-h-[420px] overflow-hidden sm:min-h-[500px] lg:min-h-[620px]">
             <Image
               src={data.portraitImage}
               alt={data.portraitAlt}
               fill
               className="object-cover transition-transform duration-500 ease-out group-hover:scale-95"
-              sizes="(max-width: 1024px) 90vw, 420px"
+              sizes="(max-width: 640px) 92vw, (max-width: 1024px) 70vw, 520px"
               priority={false}
             />
           </div>
-          <div className="absolute -left-12 bottom-16 z-10 h-42 w-42">
+          <div className="absolute left-0 bottom-8 z-10 h-32 w-32 md:-left-12 md:bottom-16 md:h-42 md:w-42">
             <svg
               viewBox="0 0 120 120"
               className="h-full w-full text-black/80 spin-circle"
@@ -84,7 +96,7 @@ export default function AboutUs({ data }: AboutUsProps) {
                   d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"
                 />
               </defs>
-              <text className="fill-current text-[13px] tracking-[5px] uppercase">
+              <text className="fill-current text-[15px] font-semibold tracking-[6px] uppercase">
                 <textPath href="#about-us-circle-text" startOffset="0%">
                   {data.circleText}
                 </textPath>

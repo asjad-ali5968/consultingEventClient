@@ -78,7 +78,7 @@ export const aboutPageData: AboutPageData = {
   },
   portfolioNewsletterData: {
     image: {
-      src: "/service/signup.webp",
+      src: "/event2.jpg",
       alt: "Couple holding hands on a bridge",
     },
     eyebrow: "Sign Up",

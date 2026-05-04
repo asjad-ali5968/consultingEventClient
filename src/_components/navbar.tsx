@@ -50,12 +50,12 @@ export default function Navbar() {
       <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between ">
         <Link href="/" className="shrink-0">
           <Image
-            src="/logo/ChatGPT Image Apr 26, 2026, 03_52_57 PM.png"
+            src="/logo/doraDesign.webp"
             alt="Beasty Events logo"
             width={150}
             height={150}
             priority
-            className="mt-3 h-auto w-[115px] object-cover brightness-[100] sm:w-[130px] md:w-[150px]"
+            className="mt-3 h-auto w-[115px] object-cover brightness-[100] sm:w-[130px] md:w-[150px] invert-100"
           />
         </Link>
 

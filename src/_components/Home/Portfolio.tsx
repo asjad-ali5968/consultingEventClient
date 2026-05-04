@@ -40,6 +40,12 @@ export default function Portfolio({ data }: PortfolioProps) {
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                     className="object-cover"
                   />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/45 via-black/10 to-transparent" />
+                  <div className="absolute right-3 bottom-8 text-center text-white">
+                    <p className="mt-1 font-sans font-bold text-[18px] leading-none text-white transform-gpu transition-transform duration-500 ease-out group-hover:translate-x-4 group-hover:translate-z-[18px]">
+                      {item.location}
+                    </p>
+                  </div>
                 </div>
 
                 <div className="absolute inset-0 flex backface-hidden transform-[rotateY(180deg)]">

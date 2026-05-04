@@ -4,21 +4,23 @@ export const homeData: HomePageData = {
   heroData: {
     slides: [
       {
-        image: "/sliderImag/hero3.webp",
+        image: "/event2.jpg",
         tag: "Dream Maker",
         title: "Birthday & Event Planner For Colorful Couples",
         description:
           "We would love to meet up and chat about how we can make <span>your dream</span> Event happen!",
       },
       {
-        image: "/sliderImag/hero2.webp",
+        image:
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882089/20_v45smo.webp",
         tag: "Elegant Moments",
         title: "International & Destination Events Planner",
         description:
           "o matter your dreams - we can assist you in planning your <span>weddings - events</span>",
       },
       {
-        image: "/sliderImag/hero1.webp",
+        image:
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882097/27_w60kss.webp",
         tag: "Luxury Experience",
         title: "We Make Your Event Dreams Come",
         description:
@@ -37,8 +39,8 @@ export const homeData: HomePageData = {
     leftDescription:
       "We would love to meet up and chat about how we can make your dream Event decoration happen! to check our best portfolio you can click on find out more Button Below.",
     paragraphs: [
-      "With BEASTY EVENTS DECOR, your next event is sure to be the talk of the town. I use my creativity and years of experience to make your special day turn out exactly how you want it. From private parties to servicing and catering your special event.I'm here to ensure that every detail is flawlessly planned and executed.",
-      "Since 2020, I've been creating memorable experiences for my clients. I'll help you plan and execute an incredible event that your guests will never forget. No matter what type of event you're looking for, I'm here to make sure you won't have to worry about a thing. Book a consultation with me today.",
+      "Dora's Designs, LLC is a full event-planning service company that transforms ordinary spaces into unforgettable experiences through luxury balloon décor, floral installations, and custom event styling. From intimate celebrations to large-scale events, we collaborate closely with every client to bring their vision to life with elegance, creativity, and precision.",
+      "At Dora’s Designs , we don’t just decorate, we bring your vision to life with luxury, precision, and heart. From custom floral installations to statement backdrops, your event becomes a reflection of you! Let’s start designing today to create something meaningful and unforgettable.",
     ],
     cta: { label: "Find out more" },
   },
@@ -93,23 +95,24 @@ export const homeData: HomePageData = {
   },
 
   reviewsData: {
-    backgroundImage: "/review.webp",
+    backgroundImage:
+      "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882097/27_w60kss.webp",
     starsText: "★★★★★",
     items: [
       {
         name: "L. Mata",
         message:
-          "Lia is communicative, reasonably priced & most of all she delivered as expected. Love the balloons!! Will def book her again for my next event. Thanks Lia!!",
+          "Dora is communicative, reasonably priced & most of all she delivered as expected. Love the balloons!! Will def book her again for my next event. Thanks Dora Designs!!",
       },
       {
         name: "M.Austin",
         message:
-          "Beasty Events Decor should be your first stop for any event. They are extremely professional and patient with their clients (my experiences has always been top tier). The work load and effort that is put into the work was definitely worth my coins. Stay bless and continue to Beasty Events Decor.",
+          "Dora Designs should be your first stop for any event. They are extremely professional and patient with their clients (my experiences has always been top tier). The work load and effort that is put into the work was definitely worth my coins. Stay bless and continue to Dora Designs.",
       },
       {
         name: "Pedro Lawrence",
         message:
-          "I honestly have to admit I was not sure what to expect at first, but after my experience, it was nothing short of amazing. From the hospitality to pricing, the quality of service was very impressive. Everything was really great. I recommend it to anyone. You will not be disappointed.",
+          "I honestly have to admit I was not sure what to expect at first, but after my experience, it was nothing short of amazing. From the hospitality to pricing, the quality of service was very impressive. Everything was really great. I recommend it to anyone. You will not be disappointed. Thanks Dora Designs!!",
       },
     ],
   },
@@ -117,21 +120,20 @@ export const homeData: HomePageData = {
   aboutUsData: {
     eyebrow: "About Us",
     heading: {
-      title: "Beasty Events",
+      title: "Dora's Designs &",
       scriptWord: "Decorations",
     },
     description:
-      "Our goal is to make things easier when planning your event, whether its a meeting, corporate events, birthday, baby shower, gender reveal, sweet sixteen, or even a wedding Beasty Events Decor has you covered. We provide you with service but most of all its the quality experience. we work with you to help you decide the perfect menu for your event. our catering platters come in half trays feeding 1-20 people and full trays feeding 21-40 people all depending on the dish and serving size. Please advise us of any food allergies. We offer pick up and delivery for a fee, as well as food Sharing service.",
+      "Welcome to Dora’s Designs LLC, where each day is a chance to unleash your inner event maestro! Whether you're brainstorming for a dazzling gala, preparing for a warm welcome for a new bundle of joy, or an elegant tea party, we've got the ideas and expertise to turn your plans into a timeless and unforgettable celebration!\n\nThe founder of Dora’s Designs LLC, Anna, discovered a creative calling within herself which she feels was inherited by her mother Dora, who suffers from end-stage Alzheimer’s disease. Back in the 1990’s, Dora created centerpieces, balloon garlands before they were a thing of modern times, and creative keepsakes for special occasions that are still admired and spoken about nearly 30 years later. Dora’s Designs LLC. was established in honor of Dora, to continue sustaining her decorative and talented legacy of making visions come to life.Every event planned, decoration created, and garland assembled is made with love and in honor of Dora who would be incredibly proud of what the owner has accomplished and the creations that have been made in her name.",
     bullets: ["20 Years of Experience", "250+ Events Decorated"],
     signature: {
-      initials: "BE",
-      name: "Beasty Events",
+      initials: "DD",
+      name: "Dora's Designs LLC",
       role: "Event Planner",
     },
-    portraitImage:
-      "/ChatGPT%20Image%20Apr%2027%2C%202026%2C%2007_41_40%20PM.webp",
+    portraitImage: "/logo/dora.webp",
     portraitAlt: "Owner portrait",
-    circleText: "Beast Events Decoration •",
+    circleText: "Dora's Designs LLC •",
   },
 
   moreInfoData: {
@@ -170,35 +172,38 @@ export const homeData: HomePageData = {
     },
     items: [
       {
-        couple: "C & C",
-        location: "Lakewood WA, USA",
-        image: "/img/portfolio/3.webp",
+        couple: "",
+        location: "New York, USA",
+        image:
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882085/15_vl99kg.webp",
         description:
           "From welcome styling to the final send-off, every detail was curated to create a warm and timeless event decor experience for guests and family.",
-        planner: "BEASTY EVENTS DECOR",
-        photographer: "LIA",
+        planner: "Dora's Designs LLC",
+        photographer: "Anna",
         ctaHref: "#",
         ctaLabel: "Find out more",
       },
       {
-        couple: "C & W",
-        location: "Green House, Manhattan",
-        image: "/img/portfolio/5.webp",
+        couple: "",
+        location: "New Jersey, USA",
+        image:
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882093/24_x2gs6x.webp",
         description:
           "A modern garden celebration designed with soft palettes, layered florals, and seamless coordination to keep the event fully present in every moment.",
-        planner: "BEASTY EVENTS DECOR",
-        photographer: "LIA",
+        planner: "Dora's Designs LLC",
+        photographer: "Anna",
         ctaHref: "#",
         ctaLabel: "Find out more",
       },
       {
-        couple: "H & H",
-        location: "Lavel Park, Oxfordshire",
-        image: "/img/portfolio/1.webp",
+        couple: "",
+        location: "New York, USA",
+        image:
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882086/19_x4ny5v.webp",
         description:
           "An elegant outdoor setup blending structured event management and creative decor styling to deliver a celebration that felt both luxurious and intimate.",
-        planner: "BEASTY EVENTS DECOR",
-        photographer: "LIA",
+        planner: "Dora's Designs LLC",
+        photographer: "Anna",
         ctaHref: "#",
         ctaLabel: "Find out more",
       },
@@ -206,14 +211,14 @@ export const homeData: HomePageData = {
   },
 
   parallaxVideoData: {
-    backgroundImage: "/parallex.avif",
+    backgroundImage: "/event2.jpg",
     tag: "Be Inspired",
     heading: {
-      title: "Latest wedding",
+      title: "Latest Event",
       scriptWord: "Video",
     },
     videoSrc:
-      "/Beasty events first wedding decor set-up.  It was a well organized event and these are the resul.mp4",
+      "https://res.cloudinary.com/dzjyyemdr/video/upload/v1777882148/2_wsyvra.mp4",
     playAriaLabel: "Play portfolio video",
     closeAriaLabel: "Close video",
   },
@@ -228,43 +233,108 @@ export const homeData: HomePageData = {
       "The best prices for your relaxing vacation curabitur aliquet orci elit gene tristique in lorem dream vibea aliquam tincidunt felis sed gravida aliquam neque libero hendrerit mora the amenda the mollis lacus, tuem maurisne. Aliquam erat volutpat.",
     plans: [
       {
-        title: "Hotel Room Decor Package",
-        price: "$190",
+        title: "the grand revveal pakage",
+        price: "",
         subtitle: "Delivery and set-up included",
-        image: "/pakage/pakage1.webp",
-        description: "Could be customized to meet your celebration needs.",
+        image: "/allPackage/pakage1.webp",
+        description:
+          "Our most popular package provides a balanced, bold, and beautifully curated setup.",
         features: [
-          "15 helium-filled latex balloons with foil strings under the ceiling",
-          "Two large mylar number balloons on balloon bases",
-          '"HAPPY BIRTHDAY" mylar balloon letters sign on a wall',
+          "16-20 feet of organic premium balloon garlands",
+          "Up to 3 custom backdrop panels",
+          "Up to 3 custom 3-D props",
+          "Fully personalized signage",
+          "Premium styling",
+          "Layout planning",
+          "Cohesive design execution",
         ],
       },
       {
-        title: "Custom Package",
+        title: "signature luxe experience",
         price: "$499",
         subtitle: "Prices Start From",
-        image: "/pakage/pakage2.jpg",
+        image: "/allPackage/pakage2.webp",
         description:
-          "Custom package for medium-size parties up to 50 guests with more detailed decoration options.",
+          "If balloons are not something you envision, that is perfectly fine. Our Signature Luxe Experience allows clients to bring their own vision of florals with a combination of their themed event to complement the floral design.",
         features: [
-          "Backdrops",
-          "Balloon arches",
-          "Balloon centerpieces",
-          "LED signs",
-          "Add-ons upon request",
+          "(3) panel wooden backdrop rentals (square and abstract)",
+          "Personalized signage",
+          "6ft floral garland",
+          "(2) medium floral arrangements",
         ],
       },
       {
-        title: "Winter Sale Package",
+        title: 'the "garden of you" experience',
         price: "$999",
         subtitle: "Sale Ends 1/31",
-        image: "/pakage/pakage3.webp",
+        image: "/allPackage/pakage3.webp",
         description:
-          "Beasty Events Decor presents a limited winter sale package with special seasonal pricing for selected celebrations.",
+          "Step into your own personal oasis with this jaw-dropping whimsical set-up.",
         features: [
-          "Main area decor",
-          "10 guest tables",
-          "Inquire within for details",
+          "Choose up to (10) of your favorite flowers and let us handle the planting",
+          "14-16 feet of floral garlands",
+          "(1) circle backdrop rental",
+          "(3D) silk butterfly props",
+          "Custom signage upon request",
+        ],
+      },
+      {
+        title: "the maison blanc experience",
+        price: "",
+        subtitle: "",
+        image: "/allPackage/pakage4.webp",
+        description:
+          "Where heritage style meets modern elegance. This breath-taking Ralph Lauren-inspired installation features cascades of baby's breath and tailored details.",
+        features: [
+          "Personalized signage",
+          "(2) 3-D props",
+          "(2) cake stand rentals",
+          "One floral arrangement",
+          "(2) wooden backdrop rentals",
+          "18-20ft of premium organic balloon garlands",
+        ],
+      },
+      {
+        title: "falling for florals pakage",
+        price: "",
+        subtitle: "",
+        image: "/allPackage/pakage5.webp",
+        description:
+          "This fall-inspired package delivers an aesthetic vibe during the fall season. Perfect for fall birthdays, baby showers, bridal showers, and more.",
+        features: [
+          "(2) wooden panel backdrops",
+          "(2) personalized-themed 3-D props",
+          "(2) floral arrangements",
+          "Mini stage",
+          "18-20ft of premium organic balloon garlands",
+        ],
+      },
+      {
+        title: "ballon & baloom express pakage",
+        price: "",
+        subtitle: "",
+        image: "/allPackage/pakage6.webp",
+        description:
+          "Our best seller package, Balloon and Bloom Express, offers clients a more affordable option while still elevating your special event. This package offers delivery and setup services only.",
+        features: [
+          "(1) personalized foam backdrop (yours to keep)",
+          "8-10ft balloon garland",
+          "Personalized signage",
+        ],
+      },
+      {
+        title: "surf's up , baloon up pakage",
+        price: "",
+        subtitle: "",
+        image: "/allPackage/pakage7.webp",
+        description:
+          "Catch the best waves with this beach-themed colorful setup. A main focal point, perfect for larger gatherings, will have guests stopping you to ask how you brought the waves to your event.",
+        features: [
+          "(2) wooden panel rentals",
+          "(1) customized wooden surfboard (to rent or keep for an additional fee)",
+          "18-22ft premium organic balloon garlands",
+          "(1) wooden number marquee rental",
+          "Customized 3D props",
         ],
       },
     ],

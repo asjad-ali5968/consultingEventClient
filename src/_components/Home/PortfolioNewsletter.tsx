@@ -6,11 +6,13 @@ type PortfolioNewsletterProps = {
   data: PortfolioNewsletterData;
 };
 
-export default function PortfolioNewsletter({ data }: PortfolioNewsletterProps) {
+export default function PortfolioNewsletter({
+  data,
+}: PortfolioNewsletterProps) {
   return (
-    <section className="relative z-20 bg-white overflow-hidden">
-      <div className="grid w-full overflow-hidden md:grid-cols-2">
-        <div className="group relative min-h-[350px] overflow-hidden md:min-h-[620px]">
+    <section className="relative z-20 min-h-[80vh] overflow-hidden bg-white">
+      <div className="grid min-h-[80vh] w-full overflow-hidden md:grid-cols-2">
+        <div className="group relative min-h-[80vh] overflow-hidden">
           <Image
             src={data.image.src}
             alt={data.image.alt}

@@ -23,6 +23,8 @@ import PortfolioNewsletter from "@/_components/Home/PortfolioNewsletter";
 import { portfolioClientsData } from "@/helper/aboutData";
 import { portfolioNewsletterData } from "@/helper/aboutData";
 
+import { contactFaqData } from "@/helper/aboutData";
+import ContactFaq from "@/_components/Contact/ContactFaq";
 export default function Home() {
   return (
     <>
@@ -31,12 +33,13 @@ export default function Home() {
       <Services data={servicesData} />
       <Reviews data={reviewsData} />
       <AboutUs data={aboutUsData} />
-      <MoreInfo data={moreInfoData} />
+      <ContactFaq data={contactFaqData} />
+      {/* <MoreInfo data={moreInfoData} /> */}
       <Portfolio data={portfolioData} />
       <ParallaxVideo data={parallaxVideoData} />
       <PricingPlan data={pricingPlanData} />
       <PortfolioNewsletter data={portfolioNewsletterData} />
-      <PortfolioClients data={portfolioClientsData} />
+      {/* <PortfolioClients data={portfolioClientsData} /> */}
     </>
   );
 }
