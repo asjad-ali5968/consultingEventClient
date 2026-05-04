@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 
 import type { HeroSlide } from "@/types/home";
+import { ArrowDownIcon } from "lucide-react";
 
 function renderDescription(description: string) {
   let key = 0;
@@ -66,6 +68,7 @@ export default function PortfolioHero({ slides }: PortfolioHeroProps) {
   const heroSlides = useMemo(() => slides, [slides]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [hasEntered, setHasEntered] = useState(false);
+  const [showScrollCue, setShowScrollCue] = useState(true);
   const totalSlides = heroSlides.length;
 
   useEffect(() => {
@@ -87,9 +90,30 @@ export default function PortfolioHero({ slides }: PortfolioHeroProps) {
     return () => clearInterval(timer);
   }, [totalSlides]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollCue(window.scrollY < 24);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleScrollToNext = () => {
+    const heroSection = document.getElementById("portfolio-hero");
+    const nextSection = heroSection?.nextElementSibling as HTMLElement | null;
+    if (!nextSection) {
+      return;
+    }
+    nextSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
-    // 1. Removed 'sticky top-0' so the section scrolls naturally
-    <section className="relative h-screen w-full">
+    <section id="portfolio-hero" className="relative h-screen w-full">
       {/* 2. BACKGROUND LAYER: Fixed to the screen so it acts as a parallax backdrop */}
       <div className="fixed inset-0 z-[-1] h-screen w-full overflow-hidden bg-black">
         <div
@@ -161,6 +185,47 @@ export default function PortfolioHero({ slides }: PortfolioHeroProps) {
           })}
         </div>
       </div>
+      <button
+        type="button"
+        onClick={handleScrollToNext}
+        aria-label="Scroll to next section"
+        className={`group absolute bottom-8 left-1/2 z-20 -translate-x-1/2 transition-all duration-300 ${
+          showScrollCue
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-2 opacity-0"
+        }`}
+      >
+        <motion.span
+          aria-hidden
+          // 0=Start, 16=Ground, 10=Bounce 1 peak, 16=Ground, 13=Bounce 2 peak, 16=Ground, 0=Return
+          animate={{ y: [-10, 16, 10, 16, 13, 16, -10] }}
+          transition={{
+            duration: 1.5, // See note below about this duration
+            times: [
+              0,
+              0.1, // 1. Drop: Now takes only 20% of the time (faster drop)
+              0.32, // 2. Bounce 1 Up
+              0.44, // 3. Bounce 1 Down
+              0.52, // 4. Bounce 2 Up
+              0.6, // 5. Bounce 2 Down
+              1, // 6. Return: Now takes a massive 40% of the time (0.6 to 1.0)
+            ],
+            ease: [
+              "circIn", // 1. Drop
+              "circOut", // 2. Bounce 1 Up
+              "circIn", // 3. Bounce 1 Down
+              "circOut", // 4. Bounce 2 Up
+              "circIn", // 5. Bounce 2 Down
+              "easeInOut", // 6. Return
+            ],
+            repeat: Infinity,
+            repeatDelay: 1,
+          }}
+          className="flex h-[48px] w-[48px] items-center justify-center rounded-full border border-white/30 text-[24px] leading-none text-white transition-colors duration-200 group-hover:border-white"
+        >
+          <ArrowDownIcon className="h-5 w-5" />
+        </motion.span>
+      </button>
     </section>
   );
 }
