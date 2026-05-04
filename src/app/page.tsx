@@ -25,9 +25,10 @@ import { portfolioNewsletterData } from "@/helper/aboutData";
 
 import { contactFaqData } from "@/helper/aboutData";
 import ContactFaq from "@/_components/Contact/ContactFaq";
+import HomeVisibilityGate from "@/_components/Home/HomeVisibilityGate";
 export default function Home() {
   return (
-    <>
+    <HomeVisibilityGate>
       <Hero slides={heroData.slides} />
       <WhatWeDo data={whatWeDoData} />
       <Services data={servicesData} />
@@ -40,6 +41,6 @@ export default function Home() {
       <PricingPlan data={pricingPlanData} />
       <PortfolioNewsletter data={portfolioNewsletterData} />
       {/* <PortfolioClients data={portfolioClientsData} /> */}
-    </>
+    </HomeVisibilityGate>
   );
 }

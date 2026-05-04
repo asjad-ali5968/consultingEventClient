@@ -26,9 +26,9 @@ export default function Portfolio({ data }: PortfolioProps) {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {data.items.map((item) => (
+          {data.items.map((item, index) => (
             <article
-              key={item.couple}
+              key={item.couple || item.image || `portfolio-item-${index}`}
               className="group h-[420px] perspective-distant"
             >
               <div className="relative h-full w-full rounded-[2px] transform-3d transition-transform duration-700 group-hover:transform-[rotateY(180deg)]">

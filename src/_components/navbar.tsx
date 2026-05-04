@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
+  { label: "About", href: "#" },
+  { label: "Services", href: "#" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "#" },
 ];
 
 export default function Navbar() {

@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import TextPressure from "@/helper/TextPressure";
 
 const exploreLinks = [
   { label: "Our Work", href: "/portfolio" },
-  { label: "About Us", href: "/about" },
-  { label: "Shop", href: "/services" },
-  { label: "Reach Out", href: "/contact" },
+  { label: "About Us", href: "#" },
+  { label: "Shop", href: "#" },
+  { label: "Reach Out", href: "#" },
 ];
 
 const followLinks = [
@@ -21,18 +22,22 @@ export default function Footer() {
   return (
     <footer className="bg-[#7e8978] px-6 pb-8 pt-12 text-[#ffffff] md:px-10 md:pt-16">
       <div className="mx-auto w-full max-w-7xl">
-        <h2 className="text-center text-[46px] leading-none tracking-[0.4em] uppercase md:text-[92px]">
-          LET&apos;S{" "}
-          <span
-            className="text-[68px] normal-case md:text-[128px]"
-            style={{ fontFamily: "var(--font-league-script), cursive" }}
-          >
-            Do
-          </span>{" "}
-          WORK!
-        </h2>
+        <div style={{ position: "relative", height: "120px" }}>
+          <TextPressure
+            text="Book Your Next Event with Us!"
+            flex
+            alpha={false}
+            stroke={false}
+            width
+            weight
+            italic
+            textColor="#ffffff"
+            strokeColor="#5227FF"
+            minFontSize={36}
+          />
+        </div>
 
-        <div className="mt-8 overflow-visible rounded-[22px] bg-[#ffffff] p-2 md:mt-10 md:p-4">
+        <div className="mt-0 overflow-visible rounded-[22px] bg-[#ffffff] p-2 md:mt-10 md:p-4">
           <div className="relative mx-auto mb-0 h-[320px] w-full max-w-[980px] md:mb-0 md:-mt-45 md:h-[460px]">
             <Image
               src="/logo/illustration.webp"

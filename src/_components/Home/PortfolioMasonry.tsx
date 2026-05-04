@@ -108,10 +108,7 @@ export default function PortfolioMasonry({
         </div>
 
         <LayoutGroup id="portfolio-masonry">
-          <motion.div
-            layout
-            transition={layoutTransition}
-          >
+          <motion.div layout transition={layoutTransition}>
             <motion.div
               layout
               className="w-full"
@@ -122,7 +119,7 @@ export default function PortfolioMasonry({
                 {filteredPhotos.map((photo, photoIndex) => (
                   <motion.article
                     layout
-                    key={photo.src}
+                    key={photoIndex}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -134,7 +131,9 @@ export default function PortfolioMasonry({
                   >
                     <div
                       className="group relative w-full overflow-hidden rounded-sm bg-zinc-100"
-                      style={{ aspectRatio: `${photo.width} / ${photo.height}` }}
+                      style={{
+                        aspectRatio: `${photo.width} / ${photo.height}`,
+                      }}
                     >
                       <Image
                         src={photo.src}

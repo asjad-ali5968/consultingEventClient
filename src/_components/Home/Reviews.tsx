@@ -36,7 +36,7 @@ export default function Reviews({ data }: ReviewsProps) {
           className="mx-auto max-w-3xl text-xl italic leading-relaxed md:text-[18px] md:leading-[1.35]"
           style={{ fontFamily: "var(--font-playfair-display), serif" }}
         >
-          "{activeReview.message}"
+          &quot;{activeReview.message}&quot;
         </p>
         <p className="mt-6 text-sm uppercase tracking-[0.25em] text-white/90">
           {activeReview.name}
