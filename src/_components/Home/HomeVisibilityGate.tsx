@@ -7,7 +7,9 @@ type HomeVisibilityGateProps = {
   children: ReactNode;
 };
 
-export default function HomeVisibilityGate({ children }: HomeVisibilityGateProps) {
+export default function HomeVisibilityGate({
+  children,
+}: HomeVisibilityGateProps) {
   const { contentVisible } = useLoaderGate();
 
   return (
