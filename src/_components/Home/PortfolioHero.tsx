@@ -2,32 +2,60 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
+import type { ReactNode } from "react";
 
 import type { HeroSlide } from "@/types/home";
 
 function renderDescription(description: string) {
-  const match = description.match(/<span>(.*?)<\/span>/);
+  let key = 0;
 
-  if (!match) {
-    return description;
-  }
+  const parseInline = (text: string): ReactNode[] => {
+    const regex = /<(span|b)>([\s\S]*?)<\/\1>/g;
+    const parts: ReactNode[] = [];
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
 
-  const highlightedText = match[1];
-  const fullMatch = match[0];
-  const [beforeText, afterText] = description.split(fullMatch);
+    while ((match = regex.exec(text)) !== null) {
+      const [fullMatch, tag, content] = match;
+      const startIndex = match.index;
 
-  return (
-    <>
-      {beforeText}
-      <span
-        style={{ fontFamily: "var(--font-league-script), cursive" }}
-        className="text-[28px] leading-none text-black font-semibold"
-      >
-        {highlightedText}
-      </span>
-      {afterText}
-    </>
-  );
+      if (startIndex > lastIndex) {
+        parts.push(text.slice(lastIndex, startIndex));
+      }
+
+      const children = parseInline(content);
+
+      if (tag === "span") {
+        parts.push(
+          <span
+            key={`span-${key}`}
+            style={{ fontFamily: "var(--font-league-script), cursive" }}
+            className="text-[28px] leading-none text-black font-semibold"
+          >
+            {children}
+          </span>,
+        );
+      } else {
+        parts.push(
+          <b key={`b-${key}`} className="font-semibold">
+            {children}
+          </b>,
+        );
+      }
+
+      key += 1;
+      lastIndex = startIndex + fullMatch.length;
+    }
+
+    if (lastIndex < text.length) {
+      parts.push(text.slice(lastIndex));
+    }
+
+    return parts;
+  };
+
+  const parsed = parseInline(description);
+  return parsed.length > 0 ? <>{parsed}</> : description;
 }
 
 type PortfolioHeroProps = {
@@ -115,7 +143,7 @@ export default function PortfolioHero({ slides }: PortfolioHeroProps) {
                         fontFamily: "var(--font-playfair-display), serif",
                       }}
                     >
-                      {slide.title}
+                      {renderDescription(slide.title)}
                     </h1>
                     <p
                       className={`mt-4 max-w-md font-sans text-sm text-zinc-600 transition-all duration-700 md:text-base ${

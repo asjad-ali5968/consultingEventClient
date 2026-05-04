@@ -2,36 +2,18 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
-import Masonry from "react-masonry-css";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 
-import type { PortfolioMasonryData, PortfolioCategory } from "@/types/portfolio";
+import type {
+  PortfolioMasonryData,
+  PortfolioCategory,
+} from "@/types/portfolio";
 
-const masonryPattern = [
-  "h-[260px] md:h-[320px] lg:h-[360px]",
-  "h-[360px] md:h-[460px] lg:h-[560px]",
-  "h-[300px] md:h-[380px] lg:h-[440px]",
-  "h-[420px] md:h-[520px] lg:h-[620px]",
-  "h-[280px] md:h-[340px] lg:h-[400px]",
-  "h-[380px] md:h-[480px] lg:h-[580px]",
-];
-
-const couplesPattern = [
-  "h-[420px] md:h-[520px] lg:h-[620px]",
-  "h-[320px] md:h-[400px] lg:h-[480px]",
-  "h-[460px] md:h-[560px] lg:h-[660px]",
-  "h-[280px] md:h-[340px] lg:h-[400px]",
-];
-
-const compactPattern = [
-  "h-[300px] md:h-[360px] lg:h-[420px]",
-  "h-[360px] md:h-[440px] lg:h-[520px]",
-  "h-[280px] md:h-[340px] lg:h-[400px]",
-];
-
-const masonryBreakpoints = {
-  default: 3,
-  1024: 2,
-  640: 1,
+const getColumnCount = (width: number) => {
+  if (width <= 640) return 1;
+  if (width <= 1024) return 2;
+  if (width <= 1280) return 3;
+  return 4;
 };
 
 export default function PortfolioMasonry({
@@ -41,8 +23,8 @@ export default function PortfolioMasonry({
 }) {
   const [activeCategory, setActiveCategory] =
     useState<PortfolioCategory>("all");
-  const [isFilterAnimating, setIsFilterAnimating] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [columnCount, setColumnCount] = useState(4);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -56,18 +38,30 @@ export default function PortfolioMasonry({
       mediaQuery.removeEventListener("change", updateMotionPreference);
   }, []);
 
-  const handleFilterChange = (category: PortfolioCategory) => {
-    if (category === activeCategory || isFilterAnimating) return;
-    if (prefersReducedMotion) {
-      setActiveCategory(category);
-      return;
-    }
+  useEffect(() => {
+    let frameId = 0;
 
-    setIsFilterAnimating(true);
-    window.setTimeout(() => {
-      setActiveCategory(category);
-      requestAnimationFrame(() => setIsFilterAnimating(false));
-    }, 150);
+    const updateColumnCount = () => {
+      setColumnCount(getColumnCount(window.innerWidth));
+    };
+
+    const onResize = () => {
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(updateColumnCount);
+    };
+
+    updateColumnCount();
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  const handleFilterChange = (category: PortfolioCategory) => {
+    if (category === activeCategory) return;
+    setActiveCategory(category);
   };
 
   const filteredPhotos = useMemo(() => {
@@ -75,15 +69,23 @@ export default function PortfolioMasonry({
     return data.photos.filter((photo) => photo.category === activeCategory);
   }, [activeCategory, data.photos]);
 
-  const activePattern = useMemo(() => {
-    if (activeCategory === "all") return masonryPattern;
-    if (activeCategory === "couples") return couplesPattern;
-    return compactPattern;
-  }, [activeCategory]);
+  const layoutTransition = prefersReducedMotion
+    ? { duration: 0 }
+    : {
+        duration: 0.55,
+        ease: [0.22, 1, 0.36, 1] as const,
+      };
+
+  const fadeTransition = prefersReducedMotion
+    ? { duration: 0 }
+    : {
+        duration: 0.45,
+        ease: [0.22, 1, 0.36, 1] as const,
+      };
 
   return (
     <section className="relative z-20 bg-white px-6 py-16 md:px-10 md:py-20">
-      <div className="mx-auto w-full max-w-6xl">
+      <div className="mx-auto w-full max-w-352">
         <div className="mb-10 flex items-center justify-center gap-6 md:gap-8">
           {data.categories.map((category) => {
             const isActive = activeCategory === category.value;
@@ -105,38 +107,50 @@ export default function PortfolioMasonry({
           })}
         </div>
 
-        <div
-          className={`transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
-            isFilterAnimating
-              ? "translate-y-1 opacity-50"
-              : "translate-y-0 opacity-100"
-          }`}
-        >
-          <Masonry
-            breakpointCols={masonryBreakpoints}
-            className="flex w-auto -ml-4 md:-ml-5 lg:-ml-6"
-            columnClassName="pl-4 md:pl-5 lg:pl-6 space-y-4 md:space-y-5 lg:space-y-6"
+        <LayoutGroup id="portfolio-masonry">
+          <motion.div
+            layout
+            transition={layoutTransition}
           >
-            {filteredPhotos.map((photo, index) => (
-              <article key={photo.src}>
-                <div
-                  className={`group relative w-full overflow-hidden rounded-sm bg-zinc-100 ${
-                    activePattern[index % activePattern.length]
-                  }`}
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    priority={index < 2}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-center transition duration-500 group-hover:scale-[1.015] group-hover:brightness-95"
-                  />
-                </div>
-              </article>
-            ))}
-          </Masonry>
-        </div>
+            <motion.div
+              layout
+              className="w-full"
+              style={{ columnCount, columnGap: "1rem" }}
+              transition={layoutTransition}
+            >
+              <AnimatePresence initial={false}>
+                {filteredPhotos.map((photo, photoIndex) => (
+                  <motion.article
+                    layout
+                    key={photo.src}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="mb-4 break-inside-avoid md:mb-5 lg:mb-6"
+                    transition={{
+                      layout: layoutTransition,
+                      opacity: fadeTransition,
+                    }}
+                  >
+                    <div
+                      className="group relative w-full overflow-hidden rounded-sm bg-zinc-100"
+                      style={{ aspectRatio: `${photo.width} / ${photo.height}` }}
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        priority={photoIndex < 3}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                        className="object-cover object-center transition duration-500 group-hover:scale-[1.015] group-hover:brightness-95"
+                      />
+                    </div>
+                  </motion.article>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          </motion.div>
+        </LayoutGroup>
       </div>
     </section>
   );
