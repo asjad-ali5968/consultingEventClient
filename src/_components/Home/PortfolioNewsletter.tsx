@@ -10,7 +10,7 @@ export default function PortfolioNewsletter({
   data,
 }: PortfolioNewsletterProps) {
   return (
-    <section className="relative z-20 min-h-[80vh] overflow-hidden bg-white">
+    <section className="relative z-20 min-h-[80vh] overflow-hidden bg-white rounded-b-[32px] md:rounded-b-4xl">
       <div className="grid min-h-[80vh] w-full overflow-hidden md:grid-cols-2">
         <div className="group relative min-h-[80vh] overflow-hidden">
           <Image

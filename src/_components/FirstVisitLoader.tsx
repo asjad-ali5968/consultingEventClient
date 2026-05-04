@@ -2,42 +2,34 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { LOADER_SESSION_KEY, useLoaderGate } from "./LoaderGateProvider";
 
-const LOGO_HOLD_MS = 900;
 const SPLIT_DURATION_MS = 700;
-const STORAGE_KEY = "first-visit-loader-shown";
 const LOADER_BG = "#5c4033";
 
 export default function FirstVisitLoader() {
+  const { markLoaderComplete } = useLoaderGate();
+
   const [isVisible, setIsVisible] = useState(() => {
     if (typeof window === "undefined") {
       return false;
     }
-    return window.sessionStorage.getItem(STORAGE_KEY) !== "1";
+    return window.sessionStorage.getItem(LOADER_SESSION_KEY) !== "1";
   });
+
+  const [logoReady, setLogoReady] = useState(false);
   const [isSplitting, setIsSplitting] = useState(false);
-  const previousOverflow = useRef<string>("");
+  const previousOverflow = useRef("");
+  const splitStartedRef = useRef(false);
+  const completionRef = useRef(false);
 
   useEffect(() => {
-    if (!isVisible) {
+    if (!isVisible || !logoReady || splitStartedRef.current) {
       return;
     }
-
-    window.sessionStorage.setItem(STORAGE_KEY, "1");
-
-    const splitTimer = window.setTimeout(() => {
-      setIsSplitting(true);
-    }, LOGO_HOLD_MS);
-
-    const hideTimer = window.setTimeout(() => {
-      setIsVisible(false);
-    }, LOGO_HOLD_MS + SPLIT_DURATION_MS);
-
-    return () => {
-      window.clearTimeout(splitTimer);
-      window.clearTimeout(hideTimer);
-    };
-  }, [isVisible]);
+    splitStartedRef.current = true;
+    setIsSplitting(true);
+  }, [isVisible, logoReady]);
 
   useEffect(() => {
     if (!isVisible) {
@@ -52,6 +44,20 @@ export default function FirstVisitLoader() {
     };
   }, [isVisible]);
 
+  function handleSplitPanelTransitionEnd(
+    e: React.TransitionEvent<HTMLDivElement>,
+  ) {
+    if (e.propertyName !== "transform") {
+      return;
+    }
+    if (!isSplitting || completionRef.current) {
+      return;
+    }
+    completionRef.current = true;
+    setIsVisible(false);
+    markLoaderComplete();
+  }
+
   if (!isVisible) {
     return null;
   }
@@ -65,6 +71,7 @@ export default function FirstVisitLoader() {
           transition: `transform ${SPLIT_DURATION_MS}ms ease-in-out`,
           transform: isSplitting ? "translateX(-100%)" : "translateX(0)",
         }}
+        onTransitionEnd={handleSplitPanelTransitionEnd}
       />
       <div
         className="absolute inset-y-0 right-0 w-1/2 will-change-transform"
@@ -88,7 +95,10 @@ export default function FirstVisitLoader() {
           width={420}
           height={420}
           priority
+          unoptimized
           className="h-auto w-[220px] max-w-full sm:w-[320px] md:w-[420px]"
+          onLoadingComplete={() => setLogoReady(true)}
+          onError={() => setLogoReady(true)}
         />
       </div>
     </div>

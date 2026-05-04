@@ -53,7 +53,7 @@ export default function Hero({ slides }: HeroProps) {
 
   return (
     <section className="relative h-screen w-full">
-      <div className="fixed inset-0 z-[-1] h-screen w-full overflow-hidden bg-black">
+      <div className="absolute inset-0 z-0 h-full w-full overflow-hidden bg-black">
         <div
           className="flex h-full w-full transition-transform duration-700 ease-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}

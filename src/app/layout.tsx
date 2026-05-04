@@ -9,6 +9,7 @@ import Navbar from "@/_components/navbar";
 import "./globals.css";
 import Footer from "@/_components/Home/Footer";
 import FirstVisitLoader from "@/_components/FirstVisitLoader";
+import { LoaderGateProvider } from "@/_components/LoaderGateProvider";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
@@ -60,11 +61,21 @@ export default function RootLayout({
         geist.variable,
       )}
     >
-      <body className="min-h-full flex flex-col bg-black text-white overflow-x-hidden">
-        <FirstVisitLoader />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <head>
+        <link
+          rel="preload"
+          href="/logo/illustration.webp"
+          as="image"
+          type="image/webp"
+        />
+      </head>
+      <body className="min-h-full flex flex-col overflow-x-hidden bg-[#7E8978] text-foreground">
+        <LoaderGateProvider>
+          <FirstVisitLoader />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </LoaderGateProvider>
       </body>
     </html>
   );

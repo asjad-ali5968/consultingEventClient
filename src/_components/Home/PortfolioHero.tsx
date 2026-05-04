@@ -114,8 +114,7 @@ export default function PortfolioHero({ slides }: PortfolioHeroProps) {
 
   return (
     <section id="portfolio-hero" className="relative h-screen w-full">
-      {/* 2. BACKGROUND LAYER: Fixed to the screen so it acts as a parallax backdrop */}
-      <div className="fixed inset-0 z-[-1] h-screen w-full overflow-hidden bg-black">
+      <div className="absolute inset-0 z-0 h-full w-full overflow-hidden bg-black">
         <div
           className="flex h-full w-full transition-transform duration-700 ease-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
