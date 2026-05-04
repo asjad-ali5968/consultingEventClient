@@ -147,11 +147,11 @@ export default function Services({
                   alt={`${service.title} ${service.accent}`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110 rounded-2xl"
                 />
-                <div className="absolute inset-0 bg-black/35 transition-colors duration-500 group-hover:bg-black/90" />
+                <div className="absolute inset-0 bg-black/35 transition-colors duration-500 group-hover:bg-black/10 rounded-2xl" />
 
-                <div className="absolute inset-x-0 bottom-[-30px] p-5 text-white transition-all duration-500 group-hover:bottom-0">
+                <div className="absolute inset-x-0 bottom-[-30px]  p-5 text-white transition-all rounded-2xl duration-500 group-hover:bottom-0">
                   <h3 className="text-3xl leading-none">
                     <span className="font-serif">{service.title}</span>
                     <span
@@ -164,7 +164,7 @@ export default function Services({
                     </span>
                   </h3>
 
-                  <div className="mt-3 h-px w-8 bg-white/70 transition-all duration-500 group-hover:w-full" />
+                  <div className="mt-3 h-px w-8 bg-white/70 transition-all rounded-2xl duration-500 group-hover:w-full" />
                   <p className="mt-4 translate-y-2 font-sans text-sm uppercase tracking-[0.2em] opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                     {data.itemCtaLabel}
                   </p>

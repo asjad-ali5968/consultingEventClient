@@ -52,16 +52,42 @@ export const homeData: HomePageData = {
     description:
       "Professional wedding and event planning with thoughtful styling, creative direction, and seamless execution for every celebration. Explore our services to find the perfect fit for your next event.",
     items: [
-      { title: "Corporate ", accent: "Events", image: "/service/service2.jpg" },
-      { title: "Birthday", accent: "Planner", image: "/service/service1.jpg" },
-      { title: "Master of", accent: "Decor", image: "/service/service3.jpg" },
       {
-        title: "Birthday",
-        accent: "Decoration",
-        image: "/service/service4.webp",
+        title: "Luxury",
+        accent: "decor",
+        image:
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882070/2_e5olg1.webp",
       },
-      { title: "Engagement", accent: "Decor", image: "/service/service5.heic" },
-      { title: "Luxury", accent: "Setups", image: "/service/service7.jpg" },
+      {
+        title: "Personalized",
+        accent: "Add-ons",
+        image:
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882083/12_wzx9li.webp",
+      },
+      {
+        title: "Balloon",
+        accent: "garlands",
+        image:
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882074/11_h1vljt.webp",
+      },
+      {
+        title: "Center",
+        accent: "pieces",
+        image:
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882086/19_x4ny5v.webp",
+      },
+      {
+        title: "3D",
+        accent: "props",
+        image:
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882071/6_gwoarc.webp",
+      },
+      {
+        title: "Floral",
+        accent: "installs",
+        image:
+          "https://res.cloudinary.com/dzjyyemdr/image/upload/v1777882097/27_w60kss.webp",
+      },
     ],
     itemCtaLabel: "Explore More →",
   },
