@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { LOADER_SESSION_KEY, useLoaderGate } from "./LoaderGateProvider";
 
 const SPLIT_DURATION_MS = 700;
+const LOADER_DISPLAY_MS = 1000;
 const LOADER_BG = "#5c4033";
 
 export default function FirstVisitLoader() {
@@ -27,8 +28,14 @@ export default function FirstVisitLoader() {
     if (!isVisible || !logoReady || splitStartedRef.current) {
       return;
     }
-    splitStartedRef.current = true;
-    setIsSplitting(true);
+    const timer = window.setTimeout(() => {
+      splitStartedRef.current = true;
+      setIsSplitting(true);
+    }, LOADER_DISPLAY_MS);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
   }, [isVisible, logoReady]);
 
   useEffect(() => {

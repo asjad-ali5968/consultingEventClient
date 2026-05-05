@@ -43,7 +43,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setIsMenuOpen(false);
       }
     };
@@ -71,7 +71,7 @@ export default function Navbar() {
           />
         </Link>
 
-        <ul className="hidden items-center gap-10 text-[17px] text-white md:flex">
+        <ul className="hidden items-center gap-10 text-[17px] text-white lg:flex">
           {navItems.map((item) => (
             <li
               key={item.label}
@@ -119,7 +119,7 @@ export default function Navbar() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="inline-flex h-10 w-10 items-center justify-center text-white md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center text-white lg:hidden"
         >
           <span className="text-2xl leading-none">
             {isMenuOpen ? "×" : "☰"}
@@ -128,7 +128,7 @@ export default function Navbar() {
       </nav>
 
       {isMenuOpen && (
-        <div className="border-t border-white/15 bg-black/95 px-6 py-5 md:hidden">
+        <div className="border-t border-white/15 bg-black/95 px-6 py-5 lg:hidden">
           <ul className="flex flex-col gap-4 text-base text-white">
             {navItems.map((item) => (
               <li key={item.label}>
