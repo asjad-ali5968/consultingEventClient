@@ -56,10 +56,10 @@ export default function Footer() {
       <div className={isMounted ? "fixed bottom-0 left-0 w-full" : "relative"}>
         <footer
           ref={footerRef}
-          className="bg-[#7e8978] px-6 pb-8 pt-12 text-[#ffffff] md:px-10 md:pt-16"
+          className="bg-[#7e8978] px-6 pb-6 pt-8 text-[#ffffff] md:px-10 md:pt-10"
         >
           <div className="mx-auto w-full max-w-7xl">
-            <div style={{ position: "relative", height: "120px" }}>
+            <div style={{ position: "relative", height: "90px" }}>
               <TextPressure
                 text="Book Your Next Event with Us!"
                 flex
@@ -74,19 +74,19 @@ export default function Footer() {
               />
             </div>
 
-            <div className="mt-0 overflow-visible rounded-[22px] bg-[#ffffff] p-2 md:mt-10 md:p-4">
-              <div className="relative mx-auto mb-0 h-[320px] w-full max-w-[980px] md:mb-0 md:-mt-45 md:h-[460px]">
+            <div className="mt-0 overflow-visible rounded-[22px] bg-[#ffffff] p-2 md:mt-6 md:p-3">
+              <div className="relative mx-auto mb-0 h-[250px] w-full max-w-[980px] md:mb-0 md:-mt-30 md:h-[380px]">
                 <Image
                   src="/logo/illustration.webp"
                   alt="Decor team"
                   fill
                   sizes="(max-width: 768px) 100vw, 980px"
-                  className="object-contain object-center"
+                  className="object-contain object-center mt-3"
                 />
               </div>
             </div>
 
-            <div className="mt-10 grid gap-8 border-t border-[#ffffff] pt-8 font-sans md:grid-cols-3">
+            <div className="mt-7 grid gap-8 border-t border-[#ffffff] pt-6 font-sans md:grid-cols-3">
               <div>
                 <h3 className="text-3xl leading-none uppercase text-[#ffffff] font-bold">
                   Explore
@@ -144,7 +144,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="mt-10 flex pb-0 flex-wrap items-center justify-between gap-3 border-t border-[#ffffff]/25 pt-5 font-sans text-sm text-[#ffffff]">
+            <div className="mt-7 flex pb-0 flex-wrap items-center justify-between gap-3 border-t border-[#ffffff]/25 pt-4 font-sans text-sm text-[#ffffff]">
               <p>© 2025 Dora’s Designs, LLC™ All Rights Reserved.</p>
               <p>Site by OZE DEVS</p>
             </div>

@@ -2,17 +2,29 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "#" },
   { label: "Services", href: "#" },
+  {
+    label: "Event Decor Pakages",
+    href: "#",
+    children: [
+      { label: "Balloon Menu", href: "#" },
+      { label: "Personalized Add-Ons", href: "#" },
+    ],
+  },
   { label: "Portfolio", href: "/portfolio" },
+  { label: "Polices & guidelines", href: "#" },
   { label: "Contact", href: "#" },
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -47,7 +59,7 @@ export default function Navbar() {
       } overflow-x-clip`}
       style={{ fontFamily: "var(--font-playfair-display), serif" }}
     >
-      <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between ">
+      <nav className="mx-auto flex h-20 w-full max-w-[1500px] items-center justify-between ">
         <Link href="/" className="shrink-0">
           <Image
             src="/logo/doraDesign.webp"
@@ -59,15 +71,45 @@ export default function Navbar() {
           />
         </Link>
 
-        <ul className="hidden items-center gap-14 text-[17px] text-white md:flex">
+        <ul className="hidden items-center gap-10 text-[17px] text-white md:flex">
           {navItems.map((item) => (
-            <li key={item.label}>
+            <li
+              key={item.label}
+              className={item.children ? "group relative" : ""}
+            >
               <Link
                 href={item.href}
-                className="font-serif font-normal transition-colors hover:text-zinc-300"
+                className={`inline-flex items-center gap-1 font-serif text-[16px] font-normal transition-colors hover:text-zinc-300 ${
+                  pathname === item.href ? "text-[#a9bd9eee]" : "text-white"
+                }`}
               >
                 {item.label}
+                {item.children && (
+                  <span className="text-xs">
+                    <ChevronDown className="h-5 w-5 mt-1" />
+                  </span>
+                )}
               </Link>
+              {item.children && (
+                <div className="invisible absolute left-0 top-full z-50 pt-5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                  <ul className="w-56 bg-white py-4 text-black shadow-lg">
+                    {item.children.map((child) => (
+                      <li key={child.label}>
+                        <Link
+                          href={child.href}
+                          className={`block px-6 py-3 text-[16px] leading-none transition-colors hover:bg-zinc-100 ${
+                            pathname === child.href
+                              ? "text-green-600"
+                              : "text-black"
+                          }`}
+                        >
+                          {child.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </li>
           ))}
         </ul>
@@ -93,7 +135,9 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block font-serif font-normal transition-colors hover:text-zinc-300"
+                  className={`block font-serif font-normal transition-colors hover:text-zinc-300 ${
+                    pathname === item.href ? "text-green-500" : "text-white"
+                  }`}
                 >
                   {item.label}
                 </Link>

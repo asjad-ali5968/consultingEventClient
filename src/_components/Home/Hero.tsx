@@ -73,6 +73,7 @@ export default function Hero({ slides }: HeroProps) {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-black/45" />
+              <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/90 via-black/45 to-transparent" />
             </div>
           ))}
         </div>
