@@ -251,8 +251,8 @@ export const homeData: HomePageData = {
       },
       {
         title: "signature luxe experience",
-        price: "$499",
-        subtitle: "Prices Start From",
+        price: "",
+        subtitle: "",
         image: "/allPackage/pakage2.webp",
         description:
           "If balloons are not something you envision, that is perfectly fine. Our Signature Luxe Experience allows clients to bring their own vision of florals with a combination of their themed event to complement the floral design.",
@@ -265,8 +265,8 @@ export const homeData: HomePageData = {
       },
       {
         title: 'the "garden of you" experience',
-        price: "$999",
-        subtitle: "Sale Ends 1/31",
+        price: "",
+        subtitle: "",
         image: "/allPackage/pakage3.webp",
         description:
           "Step into your own personal oasis with this jaw-dropping whimsical set-up.",
