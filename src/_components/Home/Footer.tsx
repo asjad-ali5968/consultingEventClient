@@ -136,10 +136,10 @@ export default function Footer() {
                   Contact
                 </h3>
                 <p className="mt-4 text-sm uppercase tracking-[0.06em] text-[#ffffff]/85">
-                  beastyeventsdecor@gmail.com
+                  doradesignllc@gmail.com
                 </p>
                 <p className="mt-2 text-sm uppercase tracking-[0.06em] text-[#ffffff]/85">
-                  631-532-9042
+                  111-111-1111
                 </p>
               </div>
             </div>
